@@ -1,30 +1,14 @@
-class Restaurante:
-    restaurantes = []
+from modelos.restaurante import Restaurante
 
-    def __init__(self, nome, categoria):
-        self._nome = nome.title()
-        self._categoria = categoria.upper()
-        self._ativo = False
-        Restaurante.restaurantes.append(self)
+restaurante_pizza = Restaurante('Papaspizza', 'Pizzaria')
+restaurante_mexicano= Restaurante('La Cucaracha', 'Mexicana')
+restaurante_sushi = Restaurante('SushiBar', 'Japônes')
 
-    def __str__(self):
-        return f'{self._nome} | {self.categoria}'
-    
-    @classmethod
-    def listar_restaurantescls(cls):
-        print(f'{'Nome do Restaurante'.ljust(25)} | {'Categoria'.ljust(25)} | {'Status'}')
-        for restaurante in cls.restaurantes:
-            print(f'{restaurante._nome.ljust(25)} | {restaurante._categoria.ljust(25)} | {restaurante.ativo}')
 
-    @property
-    def ativo(self):
-        return '✅' if self._ativo else '❌'
-    
-    def alterar_estado(self):
-        self._ativo = not self._ativo
+def main():
+    Restaurante.listar_restaurantes()
 
-restaurante_papaspizza = Restaurante('papas´pizza','Pizzaria')
-
-restaurante_sushibar = Restaurante('sushi´bar','Japonesa')
+if __name__ == '__main__':
+    main()
 
 Restaurante.listar_restaurantes()
